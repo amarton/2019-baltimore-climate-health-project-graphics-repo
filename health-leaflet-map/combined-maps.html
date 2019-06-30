@@ -1,0 +1,399 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Temperature and health conditions by zip code in Baltimore</title>
+  <meta name="description" content="Maps of temps and health conditions by zip code in Baltimore">
+  <meta name="author" content="Adam Marton">
+
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Leaflet's CSS-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+     integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+     crossorigin=""/>
+
+    <!-- Leaflet's JS - Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+      integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+      crossorigin=""></script>
+
+
+      <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+      			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      			  crossorigin="anonymous"></script>
+
+      <!-- Data source 1: geometry data for zip codes-->
+      <script type="text/javascript" src="baltimoreZips.js"></script>
+
+      <!-- Data source 2: health data by zip-->
+      <script type="text/javascript" src="health-data.js"></script>
+
+
+    <style>
+
+    .embed-container {
+        width: 100%;
+        padding: 25px;
+        overflow: hidden;
+        max-width: 1000px;
+        height: auto;
+      }
+
+      #mapid1, #mapid2 {
+        height: 450px;
+            }
+
+      .legend {
+          line-height: 18px;
+          color: #555;
+          padding:15px;
+          background:#fff;
+
+      }
+      .legend i {
+          width: 18px;
+          height: 18px;
+          float: left;
+          margin-right: 8px;
+          opacity: 0.7;
+      }
+
+    </style>
+
+
+</head>
+
+<body>
+
+
+<div class="embed-container">
+
+  <div class="container">
+
+    <div class="row">
+      <div class="col-12">
+        <h2>Increases in temperature correlate with higher prevalence of certain health conditions in Baltimore</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-12 col-md-6">
+        <p><strong>Temperature by zip code</strong><br>
+        <em>Click an area for average temp on a summer afternoon</em></p>
+        <!-- temperature map-->
+        <div id="mapid1"></div>
+      </div>
+
+      <div class="col-12 col-md-6">
+        <p><strong>Health conditions by zip code</strong><br>
+        <em>Select a health condition from dropdown to change the map</em></p>
+        <!-- health map-->
+        <div id="mapid2"></div>
+        <br><em style="float:right;">Source: Source</em>
+      </div>
+
+    </div>
+  </div>
+
+
+</div>
+
+<script>
+
+
+// START MAP 1: TEMPERATURE MAP
+
+  //this function calls in Data source 1 and adds in Data source 2, matching by zipcode1
+  baltimoreZipsData.features.map(res => Object.assign(res, {
+  properties: {
+      ...res.properties,
+      ...data2[res.properties.ZIPCODE1]
+  }
+  }))
+
+
+  var tempMap = L.map('mapid1').setView([39.3, -76.62], 11);
+
+  //call mapbox map with my access token
+  L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+      maxZoom: 18,
+      //use mapbox.satellite, mapbox.streets, mapbox.light, others
+      id: 'mapbox.light',
+      accessToken: 'pk.eyJ1IjoiYW1hcnRvbiIsImEiOiJjajgzdDFrdTcwMXIwMzJubmthd25jY3V2In0.01j1w1cZs1S7b7a4tiMvfg'
+  }).addTo(tempMap);
+
+  //this adds the basic goemetry to the map
+  //L.geoJson(baltimoreZipsData).addTo(tempMap);
+
+  //select the color ramp
+  function getColorTemp(d) {
+      return d > 92 ? '#800026' :
+             d > 91  ? '#BD0026' :
+             d > 90  ? '#E31A1C' :
+             d > 89  ? '#FC4E2A' :
+             d > 88   ? '#FD8D3C' :
+             d > 87   ? '#FEB24C' :
+             d > 86   ? '#FED976' :
+                        '#FFEDA0';
+  }
+
+  //select the initial feature from the geojson to add colors to
+  function styleTemp(feature) {
+
+      return {
+          fillColor: getColorTemp(feature.properties.temp),
+          weight: 2,
+          opacity: 1,
+          color: 'white',
+          dashArray: '3',
+          fillOpacity: 0.7
+      };
+  }
+
+
+  // Create a function for the initial map popups
+  function onEachFeatureTemp(feature, layer) {
+
+      // Create custom popups for two zip codes with no data
+    if (feature.properties.ZIPCODE1 == 21251){
+        layer.bindPopup("<p style = \"text-align:center;\"> " + "Zip Code: " + feature.properties.ZIPCODE1 + "<br>  Morgan State University <br> No data</p>");
+    }else if (feature.properties.ZIPCODE1 == 21287){
+        layer.bindPopup("<p style = \"text-align:center;\"> " + " Zip Code: " + feature.properties.ZIPCODE1 + "<br>  Johns Hopkins University <br> No data</p>");
+    } else
+          // Create default pop up. Some math functions here turn the decimals into percents and show up to one decimal in the number
+          layer.bindPopup("<p style = \"text-align:center;\">" + "Zip code: " + feature.properties.ZIPCODE1 + "<br> Median temp: "  + parseFloat((feature.properties.temp)).toFixed(1) + "&#8457;</p>");
+  }
+
+
+  //Add the color ramps and popup to the selected initial feature
+  var geojsonLayerTemp = new L.geoJson(baltimoreZipsData, {onEachFeature: onEachFeatureTemp, style: styleTemp});
+
+  geojsonLayerTemp.addTo(tempMap);
+
+
+
+//Create the legend
+
+  var legendTemp = L.control({position: 'bottomright'});
+
+  legendTemp.onAdd = function (map) {
+
+      var div = L.DomUtil.create('div', 'info legend'),
+          grades = [86, 87, 88, 89, 90, 91, 92],
+          labels = [];
+
+      // loop through our density intervals and generate a label with a colored square for each interval
+      for (var i = 0; i < grades.length; i++) {
+          div.innerHTML +=
+              '<i style="background:' + getColorTemp(grades[i] + 1) + '"></i> ' +
+              grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+      }
+
+      return div;
+  };
+
+  legendTemp.addTo(tempMap);
+
+
+// END MAP 1: TEMPERATURE MAP
+
+
+
+
+
+// START MAP 2: HEALTH MAP
+
+
+
+var healthMap = L.map('mapid2').setView([39.3, -76.62], 11);
+
+//call mapbox map with my access token
+L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    //use mapbox.satellite, mapbox.streets, mapbox.light, others
+    id: 'mapbox.light',
+    accessToken: 'pk.eyJ1IjoiYW1hcnRvbiIsImEiOiJjajgzdDFrdTcwMXIwMzJubmthd25jY3V2In0.01j1w1cZs1S7b7a4tiMvfg'
+}).addTo(healthMap);
+
+//this adds the basic goemetry to the map
+//L.geoJson(baltimoreZipsData).addTo(healthMap);
+
+//select the color ramp
+function getColor(d) {
+    return d > 21 ? '#800026' :
+           d > 18  ? '#BD0026' :
+           d > 15  ? '#E31A1C' :
+           d > 12  ? '#FC4E2A' :
+           d > 9   ? '#FD8D3C' :
+           d > 6   ? '#FEB24C' :
+           d > 3   ? '#FED976' :
+                      '#FFEDA0';
+}
+
+//select the initial feature from the geojson to add colors to
+function style(feature) {
+
+  var property = parseFloat((feature.properties.Asthma) * 100).toFixed(1);
+
+    return {
+        fillColor: getColor(property),
+        weight: 2,
+        opacity: 1,
+        color: 'white',
+        dashArray: '3',
+        fillOpacity: 0.7
+    };
+}
+
+
+// Create a function for the initial map popups
+function onEachFeature(feature, layer) {
+
+    // Create custom popups for two zip codes with no data
+    if (feature.properties.ZIPCODE1 == 21251){
+        layer.bindPopup("<p style = \"text-align:center;\"> " + "Zip Code: " + feature.properties.ZIPCODE1 + "<br>  Morgan State University <br> No data</p>");
+    }else if (feature.properties.ZIPCODE1 == 21287){
+        layer.bindPopup("<p style = \"text-align:center;\"> " + " Zip Code: " + feature.properties.ZIPCODE1 + "<br>  Johns Hopkins University <br> No data</p>");
+    } else
+        // Create default pop up. Some math functions here turn the decimals into percents and show up to one decimal in the number
+        layer.bindPopup("<p style = \"text-align:center;\">" + "Zip code: " + feature.properties.ZIPCODE1 + " <br> Asthma prevalence: " + parseFloat((feature.properties.Asthma) * 100).toFixed(1) + "% <br> Median temp: "  + parseFloat((feature.properties.temp)).toFixed(1) + "&#8457;</p>");
+}
+
+
+//Add the color ramps and popup to the selected initial feature
+var geojsonLayer = new L.geoJson(baltimoreZipsData, {onEachFeature: onEachFeature, style: style});
+
+geojsonLayer.addTo(healthMap);
+
+
+
+//DROPDOWNS *******************************
+
+//Add the dropdowns to the map
+var dropdown = L.control({position: 'topright'});
+dropdown.onAdd = function (map) {
+    var div = L.DomUtil.create('div', 'info legend');
+    div.innerHTML = '<select id="select1"><option>Asthma</option><option>COPD</option><option>Heart disease</option><option>Diabetes</option><option>Kidney disease</option></select>';
+div.firstChild.onmousedown = div.firstChild.ondblclick = L.DomEvent.stopPropagation;
+    return div;
+};
+dropdown.addTo(healthMap);
+
+
+//When the dropdown is changed, execute this function
+$('#select1').change(function(){
+
+//Create a variable called property and assign what feature property from the GeoJson to show based on the dropdown
+var property;
+
+if (this.value == "Asthma") {
+    property = "Asthma";
+}
+
+if (this.value == "COPD") {
+    property = "COPD";
+}
+
+if (this.value == "Heart disease") {
+    property = "Heart disease";
+}
+
+if (this.value == "Kidney disease") {
+    property = "Kidney disease";
+}
+
+if (this.value == "Diabetes") {
+    property = "Diabetes";
+}
+
+
+//select the feature from the geojson to add colors to based on the dropdown, using the property variable
+function style2(feature) {
+
+  //This takes the property variable from above and does some math to turn decimal into percent and show the number to one decimal point
+  var property2 = parseFloat(feature['properties'][property] * 100).toFixed(1);
+
+    return {
+        fillColor: getColor(property2),
+        weight: 2,
+        opacity: 1,
+        color: 'white',
+        dashArray: '3',
+        fillOpacity: 0.7
+    };
+}
+
+// Create a function for the map popups based on the dropdown selection / property variable
+function onEachFeature2(feature, layer) {
+
+  // Create custom popups for two zip codes with no data
+  if (feature.properties.ZIPCODE1 == 21251){
+      layer.bindPopup("<p style = \"text-align:center;\"> " + "Zip Code: " + feature.properties.ZIPCODE1 + "<br>  Morgan State University <br> No data</p>");
+  }else if (feature.properties.ZIPCODE1 == 21287){
+      layer.bindPopup("<p style = \"text-align:center;\"> " + " Zip Code: " + feature.properties.ZIPCODE1 + "<br>  Johns Hopkins University <br> No data</p>");
+  } else
+    // this is the default popup
+        layer.bindPopup("<p style = \"text-align:center;\">" + "Zip code: " + feature.properties.ZIPCODE1 + " <br>" + property + " prevalence: " + parseFloat((feature['properties'][property]) * 100).toFixed(1) + "% <br> Median temp: "  + parseFloat((feature.properties.temp)).toFixed(1) + "&#8457;</p>");
+}
+
+
+
+
+healthMap.removeLayer(geojsonLayer);
+geojsonLayer = new L.geoJson(baltimoreZipsData, {onEachFeature: onEachFeature2, style: style2});
+geojsonLayer.addTo(healthMap);
+
+
+});
+
+
+//Create the legend
+
+var legend = L.control({position: 'bottomright'});
+
+legend.onAdd = function (map) {
+
+    var div = L.DomUtil.create('div', 'info legend'),
+        grades = [3, 6, 9, 12, 15, 18, 21],
+        labels = [];
+
+    // loop through our density intervals and generate a label with a colored square for each interval
+    for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+            '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+    }
+
+    return div;
+};
+
+legend.addTo(healthMap);
+
+
+
+
+
+// END MAP 2: HEALTH MAP
+
+
+
+</script>
+
+
+<!-- Bootstrap js-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>
