@@ -99,6 +99,78 @@
                         '#FFEDA0';
   }
 
+
+
+  //select the color ramp
+
+
+
+  function getColor2(d, property) {
+
+    if (property == "Asthma") {
+
+      return d > 21 ? '#800026' :
+             d > 18  ? '#BD0026' :
+             d > 15  ? '#E31A1C' :
+             d > 12  ? '#FC4E2A' :
+             d > 9   ? '#FD8D3C' :
+             d > 6   ? '#FEB24C' :
+             d > 3   ? '#FED976' :
+                        '#FFEDA0';
+  }
+
+
+    if (property == "COPD") {
+
+      return d > 32 ? '#800026' :
+             d > 29  ? '#BD0026' :
+             d > 26  ? '#E31A1C' :
+             d > 23  ? '#FC4E2A' :
+             d > 20   ? '#FD8D3C' :
+             d > 17   ? '#FEB24C' :
+             d > 14   ? '#FED976' :
+                        '#FFEDA0';
+  }
+
+    if (property == "Heart disease") {
+
+      return d > 21 ? '#800026' :
+             d > 18  ? '#BD0026' :
+             d > 15  ? '#E31A1C' :
+             d > 12  ? '#FC4E2A' :
+             d > 9   ? '#FD8D3C' :
+             d > 6   ? '#FEB24C' :
+             d > 3   ? '#FED976' :
+                        '#FFEDA0';
+    }
+
+    if (property == "Kidney disease") {
+
+      return d > 21 ? '#800026' :
+             d > 18  ? '#BD0026' :
+             d > 15  ? '#E31A1C' :
+             d > 12  ? '#FC4E2A' :
+             d > 9   ? '#FD8D3C' :
+             d > 6   ? '#FEB24C' :
+             d > 3   ? '#FED976' :
+                        '#FFEDA0';
+    }
+
+    if (property == "Diabetes") {
+
+      return d > 21 ? '#800026' :
+             d > 18  ? '#BD0026' :
+             d > 15  ? '#E31A1C' :
+             d > 12  ? '#FC4E2A' :
+             d > 9   ? '#FD8D3C' :
+             d > 6   ? '#FEB24C' :
+             d > 3   ? '#FED976' :
+                        '#FFEDA0';
+    }
+
+
+}
+
   //select the initial feature from the geojson to add colors to
   function style(feature) {
 
@@ -183,7 +255,7 @@
     var property2 = parseFloat(feature['properties'][property] * 100).toFixed(1);
 
       return {
-          fillColor: getColor(property2),
+          fillColor: getColor2(property2, property),
           weight: 2,
           opacity: 1,
           color: 'white',
@@ -221,7 +293,6 @@
   var legend = L.control({position: 'bottomright'});
 
   legend.onAdd = function (map) {
-
       var div = L.DomUtil.create('div', 'info legend'),
           grades = [3, 6, 9, 12, 15, 18, 21],
           labels = [];
