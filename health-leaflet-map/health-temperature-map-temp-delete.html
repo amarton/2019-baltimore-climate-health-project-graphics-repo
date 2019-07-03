@@ -87,7 +87,7 @@
   //this adds the basic goemetry to the map
   //L.geoJson(baltimoreZipsData).addTo(healthMap);
 
-  //select the color ramp for asthma
+  //select the color ramp
   function getColor(d) {
       return d > 16 ? '#800026' :
              d > 14  ? '#BD0026' :
@@ -100,61 +100,76 @@
   }
 
 
-  //select the color ramp for copd
-  function getColorCodp(d) {
-    return d > 32 ? '#800026' :
-           d > 29  ? '#BD0026' :
-           d > 26  ? '#E31A1C' :
-           d > 23  ? '#FC4E2A' :
-           d > 20   ? '#FD8D3C' :
-           d > 17   ? '#FEB24C' :
-           d > 14   ? '#FED976' :
-                      '#FFEDA0';
+
+  //select the color ramp
+
+
+
+  function getColor2(d, property) {
+
+    if (property == "Asthma") {
+
+      return d > 16 ? '#800026' :
+             d > 14  ? '#BD0026' :
+             d > 12  ? '#E31A1C' :
+             d > 10  ? '#FC4E2A' :
+             d > 8   ? '#FD8D3C' :
+             d > 6   ? '#FEB24C' :
+             d > 4   ? '#FED976' :
+                        '#FFEDA0';
+  }
+
+
+    if (property == "COPD") {
+
+      return d > 32 ? '#800026' :
+             d > 29  ? '#BD0026' :
+             d > 26  ? '#E31A1C' :
+             d > 23  ? '#FC4E2A' :
+             d > 20   ? '#FD8D3C' :
+             d > 17   ? '#FEB24C' :
+             d > 14   ? '#FED976' :
+                        '#FFEDA0';
+  }
+
+    if (property == "Heart disease") {
+
+      return d > 62 ? '#800026' :
+             d > 60  ? '#BD0026' :
+             d > 58  ? '#E31A1C' :
+             d > 56  ? '#FC4E2A' :
+             d > 54   ? '#FD8D3C' :
+             d > 52   ? '#FEB24C' :
+             d > 50   ? '#FED976' :
+                        '#FFEDA0';
+    }
+
+    if (property == "Kidney disease") {
+
+      return d > 28 ? '#800026' :
+             d > 26  ? '#BD0026' :
+             d > 24  ? '#E31A1C' :
+             d > 22  ? '#FC4E2A' :
+             d > 20   ? '#FD8D3C' :
+             d > 18   ? '#FEB24C' :
+             d > 16   ? '#FED976' :
+                        '#FFEDA0';
+    }
+
+    if (property == "Diabetes") {
+
+      return d > 32 ? '#800026' :
+             d > 30  ? '#BD0026' :
+             d > 28  ? '#E31A1C' :
+             d > 26  ? '#FC4E2A' :
+             d > 24   ? '#FD8D3C' :
+             d > 22   ? '#FEB24C' :
+             d > 20   ? '#FED976' :
+                        '#FFEDA0';
+    }
+
+
 }
-
-
-
-  //select the color ramp
-  function getColorHeart(d) {
-    return d > 62 ? '#800026' :
-           d > 60  ? '#BD0026' :
-           d > 58  ? '#E31A1C' :
-           d > 56  ? '#FC4E2A' :
-           d > 54   ? '#FD8D3C' :
-           d > 52   ? '#FEB24C' :
-           d > 50   ? '#FED976' :
-                      '#FFEDA0';
-  }
-
-
-
-  //select the color ramp
-  function getColorKidney(d) {
-    return d > 28 ? '#800026' :
-           d > 26  ? '#BD0026' :
-           d > 24  ? '#E31A1C' :
-           d > 22  ? '#FC4E2A' :
-           d > 20   ? '#FD8D3C' :
-           d > 18   ? '#FEB24C' :
-           d > 16   ? '#FED976' :
-                      '#FFEDA0';
-  }
-
-
-  //select the color ramp
-  function getColorDiabetes(d) {
-    return d > 32 ? '#800026' :
-           d > 30  ? '#BD0026' :
-           d > 28  ? '#E31A1C' :
-           d > 26  ? '#FC4E2A' :
-           d > 24   ? '#FD8D3C' :
-           d > 22   ? '#FEB24C' :
-           d > 20   ? '#FED976' :
-                      '#FFEDA0';
-  }
-
-
-
 
   //select the initial feature from the geojson to add colors to
   function style(feature) {
@@ -225,7 +240,7 @@
         // loop through our density intervals and generate a label with a colored square for each interval
         for (var i = 0; i < grades.length; i++) {
             div.innerHTML +=
-                '<i style="background:' + getColorCodp(grades[i] + 1) + '"></i> ' +
+                '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
                 grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
         }
 
@@ -244,7 +259,7 @@
         // loop through our density intervals and generate a label with a colored square for each interval
         for (var i = 0; i < grades.length; i++) {
             div.innerHTML +=
-                '<i style="background:' + getColorHeart(grades[i] + 1) + '"></i> ' +
+                '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
                 grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
         }
 
@@ -263,7 +278,7 @@
         // loop through our density intervals and generate a label with a colored square for each interval
         for (var i = 0; i < grades.length; i++) {
             div.innerHTML +=
-                '<i style="background:' + getColorKidney(grades[i] + 1) + '"></i> ' +
+                '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
                 grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
         }
 
@@ -282,7 +297,7 @@
         // loop through our density intervals and generate a label with a colored square for each interval
         for (var i = 0; i < grades.length; i++) {
             div.innerHTML +=
-                '<i style="background:' + getColorDiabetes(grades[i] + 1) + '"></i> ' +
+                '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
                 grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
         }
 
@@ -290,7 +305,7 @@
     };
 
 
-    //Add the default asthma legend to the map
+    //Add the asthma legend to the map
     asthmaLegend.addTo(healthMap);
 
     //Create a variable for the current legend and set to asthma
@@ -317,42 +332,53 @@
   var property;
 
   //For each dropdown option, set the property to display from the GeoJson
+      //Remove the current legend from the map
+      // Reassign the current legend variable
+      //Add the new legend to the map based on the dropdown choice
   if (this.value == "Asthma") {
       property = "Asthma";
-
+      healthMap.removeControl(currentLegend);
+      currentLegend = asthmaLegend;
+      asthmaLegend.addTo(healthMap);
   }
 
   else if (this.value == "COPD") {
       property = "COPD";
-
+      healthMap.removeControl(currentLegend);
+      currentLegend = copdLegend;
+      copdLegend.addTo(healthMap);
   }
 
   else if (this.value == "Heart disease") {
       property = "Heart disease";
-
+      healthMap.removeControl(currentLegend);
+      currentLegend = heartLegend;
+      heartLegend.addTo(healthMap);
   }
 
   else if (this.value == "Kidney disease") {
       property = "Kidney disease";
-
+      healthMap.removeControl(currentLegend);
+      currentLegend = kidneyLegend;
+      kidneyLegend.addTo(healthMap);
   }
 
   else if (this.value == "Diabetes") {
       property = "Diabetes";
-
+      healthMap.removeControl(currentLegend);
+      currentLegend = diabetesLegend;
+      diabetesLegend.addTo(healthMap);
   }
 
 
-
-
   //select the feature from the geojson to add colors to based on the dropdown, using the property variable
-  function styleAsthma(feature) {
+  function style2(feature) {
 
     //This takes the property variable from above and does some math to turn decimal into percent and show the number to one decimal point
-    property2 = parseFloat(feature['properties'][property] * 100).toFixed(1);
+    var property2 = parseFloat(feature['properties'][property] * 100).toFixed(1);
 
       return {
-          fillColor: getColor(property2),
+          fillColor: getColor2(property2, property),
           weight: 2,
           opacity: 1,
           color: 'white',
@@ -362,83 +388,6 @@
 
 
   }
-
-
-  //select the feature from the geojson to add colors to based on the dropdown, using the property variable
-  function styleCopd(feature) {
-
-    //This takes the property variable from above and does some math to turn decimal into percent and show the number to one decimal point
-    property2 = parseFloat(feature['properties'][property] * 100).toFixed(1);
-
-      return {
-          fillColor: getColorCodp(property2),
-          weight: 2,
-          opacity: 1,
-          color: 'white',
-          dashArray: '3',
-          fillOpacity: 0.7
-      };
-
-
-  }
-
-
-  //select the feature from the geojson to add colors to based on the dropdown, using the property variable
-  function styleHeart(feature) {
-
-    //This takes the property variable from above and does some math to turn decimal into percent and show the number to one decimal point
-    property2 = parseFloat(feature['properties'][property] * 100).toFixed(1);
-
-      return {
-          fillColor: getColorHeart(property2),
-          weight: 2,
-          opacity: 1,
-          color: 'white',
-          dashArray: '3',
-          fillOpacity: 0.7
-      };
-
-
-  }
-
-
-  //select the feature from the geojson to add colors to based on the dropdown, using the property variable
-  function styleKidney(feature) {
-
-    //This takes the property variable from above and does some math to turn decimal into percent and show the number to one decimal point
-    property2 = parseFloat(feature['properties'][property] * 100).toFixed(1);
-
-      return {
-          fillColor: getColorKidney(property2),
-          weight: 2,
-          opacity: 1,
-          color: 'white',
-          dashArray: '3',
-          fillOpacity: 0.7
-      };
-
-
-  }
-
-
-  //select the feature from the geojson to add colors to based on the dropdown, using the property variable
-  function styleDiabetes(feature) {
-
-    //This takes the property variable from above and does some math to turn decimal into percent and show the number to one decimal point
-    property2 = parseFloat(feature['properties'][property] * 100).toFixed(1);
-
-      return {
-          fillColor: getColorDiabetes(property2),
-          weight: 2,
-          opacity: 1,
-          color: 'white',
-          dashArray: '3',
-          fillOpacity: 0.7
-      };
-
-
-  }
-
 
   // Create a function for the map popups based on the dropdown selection / property variable
   function onEachFeature2(feature, layer) {
@@ -454,68 +403,12 @@
   }
 
 
-  // Depending on dropdown choice
-    // Remove the old GeoJson layer
-    // Add the new GeoJson layer to the map
-    //Remove the current legend from the map
-    // Reassign the current legend variable
-    //Add the new legend to the map based on the dropdown choice
 
-if (this.value == "Asthma") {
 
   healthMap.removeLayer(geojsonLayer);
-  geojsonLayer = new L.geoJson(baltimoreZipsData, {onEachFeature: onEachFeature2, style: styleAsthma});
+  geojsonLayer = new L.geoJson(baltimoreZipsData, {onEachFeature: onEachFeature2, style: style2});
   geojsonLayer.addTo(healthMap);
 
-  healthMap.removeControl(currentLegend);
-  currentLegend = asthmaLegend;
-  asthmaLegend.addTo(healthMap);
-
-}
-
-else if (this.value == "COPD") {
-
-  healthMap.removeLayer(geojsonLayer);
-  geojsonLayer = new L.geoJson(baltimoreZipsData, {onEachFeature: onEachFeature2, style: styleCopd});
-  geojsonLayer.addTo(healthMap);
-
-  healthMap.removeControl(currentLegend);
-  currentLegend = copdLegend;
-  copdLegend.addTo(healthMap);
-
-}
-
-else if (this.value == "Heart disease") {
-    healthMap.removeLayer(geojsonLayer);
-    geojsonLayer = new L.geoJson(baltimoreZipsData, {onEachFeature: onEachFeature2, style: styleHeart});
-    geojsonLayer.addTo(healthMap);
-
-    healthMap.removeControl(currentLegend);
-    currentLegend = heartLegend;
-    heartLegend.addTo(healthMap);
-}
-
-
-else if (this.value == "Kidney disease") {
-    healthMap.removeLayer(geojsonLayer);
-    geojsonLayer = new L.geoJson(baltimoreZipsData, {onEachFeature: onEachFeature2, style: styleKidney});
-    geojsonLayer.addTo(healthMap);
-
-    healthMap.removeControl(currentLegend);
-    currentLegend = kidneyLegend;
-    kidneyLegend.addTo(healthMap);
-}
-
-
-else if (this.value == "Diabetes") {
-    healthMap.removeLayer(geojsonLayer);
-    geojsonLayer = new L.geoJson(baltimoreZipsData, {onEachFeature: onEachFeature2, style: styleDiabetes});
-    geojsonLayer.addTo(healthMap);
-
-    healthMap.removeControl(currentLegend);
-    currentLegend = diabetesLegend;
-    diabetesLegend.addTo(healthMap);
-}
 
 });
 
