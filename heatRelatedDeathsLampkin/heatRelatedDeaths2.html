@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>
+    	Capital News Service
+    </title>
+
+    <!--Load c3.css-->
+    <link href = "c3-graphics-template/css/c3.css" rel="stylesheet">
+
+    <!--Load my own CSS-->
+    <link href ="heatRelatedDeaths2.css" rel="stylesheet">
+
+    <!--Load d3.js and c3.js-->
+    <script src="c3-graphics-template/js/d3.min.js" charset = "utf-8"></script>
+    <script src="c3-graphics-template/js/c3.min.js"></script>
+
+    <!--Load the Montserrat and PT Serif fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|PT+Serif&display=swap" rel = "stylesheet">
+</head>
+
+
+<body>
+    <div id = 'container'>
+       
+        <h1 id = 'chartTitle'>Heat-related deaths in the City of Baltimore and Maryland</h1>
+        
+        <p id = 'chartSubtitle'>
+            By Amina Lampkin and Ian Round | <a href = "https://cnsmaryland.org/home"><i>Capital News Service</i></a>
+            <br>
+            Nearly 30% of the heat-related deaths in the last seven years occurred in the city of Baltimore.
+        </p>
+        
+        <div id='chart'></div>
+        
+        <div id='source'>
+            <text><a href ="https://preparedness.health.maryland.gov/Pages/Home.aspx"><tspan><i>Source: Maryland Department of Health</i></tspan></a></text>
+        </div>
+
+    </div>
+
+    <script type = "text/javascript">
+        var chart = c3.generate(
+            {
+                data: { x: 'x',
+                columns: [
+                    ['x', 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019],
+                    ['data1', 13, 2, 3, 1, 5, 0, 13],
+                    ['data2', 47, 18, 8, 6, 17, 5, 28]
+                ],
+                
+                names: {
+                    data1: 'City of Baltimore',
+                    data2: 'Maryland'
+                },
+                
+                type: 'bar'
+                },
+                
+             color: {
+                 pattern: ['#F5A831', '#D9412F']
+             },
+             
+             bar: {
+                 width: {
+                     ratio: 0.75
+                 }
+             }
+            });
+
+    </script>
+
+</body>
+
+
+</html>

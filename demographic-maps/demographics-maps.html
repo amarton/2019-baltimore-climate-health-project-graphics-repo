@@ -1,0 +1,166 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Temperature and health conditions by zip code in Baltimore</title>
+  <meta name="description" content="Maps of temps and health conditions by zip code in Baltimore">
+  <meta name="author" content="Adam Marton">
+
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Leaflet's CSS-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+     integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+     crossorigin=""/>
+
+    <!-- Leaflet's JS - Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+      integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+      crossorigin=""></script>
+
+
+      <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+      			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      			  crossorigin="anonymous"></script>
+
+      <!-- Data source 1: geometry data for zip codes-->
+      <script type="text/javascript" src="baltimoreZips.js"></script>
+
+      <!-- Data source 2: health data by zip-->
+      <script type="text/javascript" src="health-data.js"></script>
+
+
+    <style>
+
+    .embed-container {
+      margin:0 auto;
+      width:90%;
+      max-width:1000px;
+    }
+
+
+    .demo-maps {
+      width:100%;
+      padding-bottom:20px;
+    }
+
+    .center {
+      text-align:center;
+    }
+
+    .demo-title {
+      font-weight:700;
+      font-size:1.25em;
+    }
+
+    @media (max-width:575px) {
+      .demo-maps {
+        width:90%;
+      }
+
+      .temp-demo-map {
+          display:none;
+      }
+
+      .temp-demo-map-small {
+          display:all;
+      }
+
+      .demo-title {
+        font-size:1em;
+      }
+
+    }
+
+
+    @media (min-width:575px) {
+
+      .temp-demo-map {
+          display:all;
+      }
+
+      .temp-demo-map-small {
+          display:none;
+      }
+
+    }
+
+
+    </style>
+
+
+</head>
+
+<body>
+
+
+<div class="embed-container">
+
+    <div class="row">
+      <div class="col-12">
+        <h3><b>High temps correlate with high poverty, lower life expectancy and more.</b></h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-12 center">
+        <img src="graphics-output/temperature-map-expanded.png" class="temp-demo-map demo-maps">
+
+        <div class="temp-demo-map-small">
+          <p class="demo-title">Temperature</p>
+          <img src="graphics-output/temperature-map.png" class="demo-maps">
+        </div>
+
+      </div>
+    </div>
+
+
+
+    <div class="row">
+
+      <div class="col-6 col-md-3 center">
+        <p class="demo-title">Poverty</p>
+        <img src="graphics-output/poverty-map.png" class="demo-maps">
+      </div>
+
+      <div class="col-6 col-md-3 center">
+        <p class="demo-title">Life expectancy</p>
+        <img src="graphics-output/life-expectancy-map.png"  class="demo-maps">
+      </div>
+
+      <div class="col-6 col-md-3 center">
+        <p class="demo-title">Crime</p>
+        <img src="graphics-output/crime-map.png" class="demo-maps">
+      </div>
+
+      <div class="col-6 col-md-3 center">
+        <p class="demo-title">Unemployment</p>
+        <img src="graphics-output/unemployment-map.png" class="demo-maps">
+      </div>
+
+
+    </div>
+
+    <div class="row">
+      <div class="col-12"><em>Source: Baltimore Neighborhood Indicators Alliance, NOAA Urban Heat Islands study (VERIFY)</em></div>
+    </div>
+
+
+
+</div>
+
+
+
+<!-- Bootstrap js-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>
