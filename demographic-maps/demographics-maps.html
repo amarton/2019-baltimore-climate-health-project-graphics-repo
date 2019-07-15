@@ -57,6 +57,11 @@
       font-size:1.25em;
     }
 
+    .small-label {
+      font-size:.8em;
+      margin-top:-5px;
+    }
+
     @media (max-width:575px) {
       .demo-maps {
         width:90%;
@@ -103,7 +108,7 @@
     <div class="row">
       <div class="col-12">
         <h3><b>High temps correlate with high poverty, lower life expectancy and more.</b></h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <p>Temperatures across Baltimore can vary up to 10 degrees on a hot summer afternoon, according to a federally-funded study from 2018. This "urban heat island effect" is illustrated by neighborhood in the large map below. A CNS analysis of neighborhood demographics found a correlation between the temperature of a neighborhood and certain quality-of-life factors. Neighborhoods with a higher ambient temperature tend to have more families living below the poverty live, lower life expectancy, higher violent crime rates and a higher rate of employment then lower-temperature neighborhoods, as seen in the smaller maps below. </p>
       </div>
     </div>
 
@@ -126,21 +131,25 @@
 
       <div class="col-6 col-md-3 center">
         <p class="demo-title">Poverty</p>
+        <p class="small-label">Percent of families living below the poverty line.</p>
         <img src="graphics-output/poverty-map.png" class="demo-maps">
       </div>
 
       <div class="col-6 col-md-3 center">
         <p class="demo-title">Life expectancy</p>
+        <p class="small-label">Average life expectancy of neighborhood residents.</p>
         <img src="graphics-output/life-expectancy-map.png"  class="demo-maps">
       </div>
 
       <div class="col-6 col-md-3 center">
         <p class="demo-title">Crime</p>
+        <p class="small-label">Rates of violent crime per 1,000 residents.</p>
         <img src="graphics-output/crime-map.png" class="demo-maps">
       </div>
 
       <div class="col-6 col-md-3 center">
         <p class="demo-title">Unemployment</p>
+        <p class="small-label">Unemployment rates among residents.</p>
         <img src="graphics-output/unemployment-map.png" class="demo-maps">
       </div>
 

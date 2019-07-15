@@ -7,6 +7,14 @@
     	Capital News Service
     </title>
 
+    <style>
+    #container {
+      width:100%;
+      max-width:900px;
+      margin:0 auto;
+    }
+</style>
+
     <!--Load c3.css-->
     <link href = "c3-graphics-template/css/c3.css" rel="stylesheet">
 
@@ -24,17 +32,18 @@
 
 <body>
     <div id = 'container'>
-       
-        <h1 id = 'chartTitle'>Heat-related deaths in the City of Baltimore and Maryland</h1>
-        
+
+        <h1 id = 'chartTitle'>Heat-related deaths in the city of Baltimore and Maryland</h1>
+
         <p id = 'chartSubtitle'>
             By Amina Lampkin and Ian Round | <a href = "https://cnsmaryland.org/home"><i>Capital News Service</i></a>
-            <br>
-            Nearly 30% of the heat-related deaths in the last seven years occurred in the city of Baltimore.
+            <br><br>
+
+There have been 128 heat related deaths recorded in Maryland since 2012. Thirty seven of those deaths (nearly 30%) have occurred in Baltimore City. Maryland recorded 47 heat related deaths in 2012, when the United States was hit with one of the most severe heat waves in modern American history. There were 28 heat-related deaths in Maryland in 2018, 13 of which occurred in Baltimore. Many of those deaths were the result of a heat wave that hit Maryland in July of that year.
         </p>
-        
+
         <div id='chart'></div>
-        
+
         <div id='source'>
             <text><a href ="https://preparedness.health.maryland.gov/Pages/Home.aspx"><tspan><i>Source: Maryland Department of Health</i></tspan></a></text>
         </div>
@@ -50,19 +59,19 @@
                     ['data1', 13, 2, 3, 1, 5, 0, 13],
                     ['data2', 47, 18, 8, 6, 17, 5, 28]
                 ],
-                
+
                 names: {
                     data1: 'City of Baltimore',
                     data2: 'Maryland'
                 },
-                
+
                 type: 'bar'
                 },
-                
+
              color: {
                  pattern: ['#F5A831', '#D9412F']
              },
-             
+
              bar: {
                  width: {
                      ratio: 0.75
