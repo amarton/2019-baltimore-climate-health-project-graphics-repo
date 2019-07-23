@@ -95,7 +95,7 @@
 
 
     // load data
-    d3.csv("demographics.csv", function(error, data) {
+    d3.csv("js/demographics.csv", function(error, data) {
 
       // change string (from CSV) into number format
       data.forEach(function(d) {
@@ -212,7 +212,7 @@
 
 
   // load data
-  d3.csv("demographics.csv", function(error, data) {
+  d3.csv("js/demographics.csv", function(error, data) {
 
     // change string (from CSV) into number format
     data.forEach(function(d) {
@@ -327,7 +327,7 @@
 
 
      // load data
-     d3.csv("demographics.csv", function(error, data) {
+     d3.csv("js/demographics.csv", function(error, data) {
 
        // change string (from CSV) into number format
        data.forEach(function(d) {
@@ -445,7 +445,7 @@
 
 
   // load data
-  d3.csv("demographics.csv", function(error, data) {
+  d3.csv("js/demographics.csv", function(error, data) {
 
     // change string (from CSV) into number format
     data.forEach(function(d) {
