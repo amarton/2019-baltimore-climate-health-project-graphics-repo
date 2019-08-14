@@ -1,0 +1,53 @@
+the_geom,full_address,hours,type_of_location,address,city,state,phone,cartodb_id,place,permanent_cooling_center,extended_heatwave_hours,heat_wave_hours,_geocoding_meta_relevance,_geocoding_meta_precision,_geocoding_meta_match_types
+0101000020E6100000B7D100DE022753C06FD39FFD48AD4340,"5225 York Road, Baltimore, Maryland","Monday-Friday, 8:30 a.m. - 4:30 p.m
+Saturday-Sunday, 11 a.m. - 7 p.m.",CAP,5225 York Road,Baltimore,Maryland,410-396-6084,1,Northern Community Action Partnership Center,TRUE,FALSE,"Regular hours of operation, no additional hours",0.91,precise,{street_number}
+0101000020E6100000809A5AB6D62753C079060DFD13A04340,"606 Cherry Hill Road, Baltimore, Maryland","Monday-Friday, 8:30 a.m. - 4:30 p.m
+Saturday, 11 a.m. - 7 p.m.
+Closed Sunday",CAP,606 Cherry Hill Road,Baltimore,Maryland,410-545-0900,2,Southern Community Action Partnership Center,TRUE,FALSE,"Regular hours of operation, no additional hours",0.95,precise,{street_number}
+0101000020E6100000118DEE20762A53C09F76F86BB2AA4340,"3939 Reistertown Road, Baltimore, Maryland","Monday-Friday, 8:30 a.m. - 4:30 p.m
+Saturday-Sunday, 11 a.m. - 7 p.m.",CAP,3939 Reistertown Road,Baltimore,Maryland,443-984-1384,3,Northwest Community Action Partnership Center,TRUE,FALSE,"Regular hours of operation, no additional hours",0.89,precise,{street_number}
+0101000020E61000003C4ED1915C2453C0B01BB62DCAA44340,"3411 Bank Street, Baltimore, Maryland","Monday-Friday, 8:30 a.m. - 4:30 p.m
+Saturday-Sunday, 11 a.m. - 7 p.m.",CAP,3411 Bank Street,Baltimore,Maryland,410-545-6518,4,Southeast Community Action Partnership Center,TRUE,FALSE,"Regular hours of operation, no additional hours",0.9,precise,{street_number}
+0101000020E6100000DD0C37E0F32553C0BB61DBA2CCA64340,"1731 E. Chase Street, Baltimore, Maryland","Monday-Friday, 8:30 a.m. - 4:30 p.m
+Saturday-Sunday, 11 a.m. - 7 p.m.",CAP,1731 E. Chase Street,Baltimore,Maryland,410-545-0136,5,Eastern Community Action Partnership Center,TRUE,FALSE,"Regular hours of operation, no additional hours",0.95,precise,{street_number}
+0101000020E610000033E197FA792753C02F34D769A4A54340,"1000 Cathedral Street, Baltimore, Maryland","Monday-Friday, 9 a.m. - 7 p.m.
+Closed Saturday, Sunday",Senior center,1000 Cathedral Street,Baltimore,Maryland,410-396-1324,6,Waxter Center for Senior Citizens,TRUE,TRUE,"Regular hours of operation, 
+July 21, 10 a.m. - 3 p.m.",0.84,precise,{street}
+0101000020E6100000D6FF39CC972553C0DD5ED218ADA74340,"1700 Gay Street, Baltimore, Maryland","Monday-Friday, 9 a.m. - 7 p.m.
+Closed Saturday, Sunday",Senior center,1700 Gay Street,Baltimore,Maryland,410-396-3861,7,Oliver Center,TRUE,FALSE,"Regular hours of operation, 
+July 21, 10 a.m. - 3 p.m.",0.9,precise,{street_number}
+0101000020E6100000B471C45A7C2A53C025CCB4FD2BA74340,"1601 N. Baker Street, Baltimore, Maryland","Monday-Friday, 9 a.m. - 7 p.m.
+Closed Saturday, Sunday",Senior center,1601 N. Baker Street,Baltimore,Maryland,410-396-7725,8,Sandtown-Winchester Center,TRUE,TRUE,"July 21, 10 a.m. - 3 p.m.",0.85,precise,{intersection}
+0101000020E61000000D71AC8BDB2453C0DCBA9BA73AA44340,"2825 Fait Avenue, Baltimore, Maryland","Monday-Friday, 9 a.m. - 7 p.m.
+Closed Saturday, Sunday",Senior center,2825 Fait Avenue,Baltimore,Maryland,410-396-9025,9,Hatton Center,TRUE,FALSE,"Regular hours of operation, no additional hours",0.9,precise,{street_number}
+0101000020E61000000C3CF71E2E2553C09088299144A74340,"2601 E. Baltimore Street, Baltimore Maryland","Monday-Friday, 9 a.m. - 7 p.m.
+Closed Saturday, Sunday",Senior center,2601 E. Baltimore Street,Baltimore,Maryland,410-396-9202,10,John Booth Center,TRUE,FALSE,"Regular hours of operation, no additional hours",0.93,precise,{street_number}
+0101000020E6100000F7E461A1D62A53C081CF0F2384AB4340,"4501 Reistertown Road, Baltimore, Maryland","Monday-Friday, 9 a.m. - 7 p.m.
+Closed Saturday, Sunday",Senior center,4501 Reistertown Road,Baltimore,Maryland,410-396-3535,11,Zeta Center,TRUE,TRUE,"July 21, 10 a.m. - 3 p.m.",0.89,precise,{street_number}
+0101000020E6100000F86BB2463D2453C0E353008C67AC4340,"4920 Harford Road, Baltimore, Maryland","Monday-Friday, 9 a.m. - 7 p.m.
+Closed Saturday, Sunday",Senior center,4920 Harford Road,Baltimore,Maryland,410-426-4009,12,Harford Center,TRUE,TRUE,"July 21, 10 a.m. - 3 p.m.",0.91,precise,{street_number}
+0101000020E610000033DC80CF0F2753C0FB912232ACA24340,"100 E. Heath Street, Baltimore, Maryland",NA,Recreation center,100 E. Heath Street,Baltimore,Maryland,410-396-4634,13,Ella Bailey Recreation Center,FALSE,,"July 18-19, 8 a.m. - 8 p.m.",0.95,precise,{street_number}
+0101000020E61000003485CE6BEC2253C0137EA99F37A94340,"5001 Sinclair Lane, Baltimore, Maryland",NA,Recreation center,5001 Sinclair Lane,Baltimore,Maryland,410-396-3060,14,Herring Run Recreation Center,FALSE,,"July 18-19, 8 a.m. - 8 p.m.",0.9,precise,{street_number}
+0101000020E61000005A8121AB5B2B53C04C37894160A54340,"3600 W. Mulberry Street, Baltimore, Maryland",NA,Recreation center,3600 W. Mulberry Street,Baltimore,Maryland,410-396-0477,15,Mary Rodman Recreation Center,FALSE,,"July 18-19, 8 a.m. - 8 p.m.",0.95,precise,{street_number}
+0101000020E6100000AF25E4839E2953C0325A475513A44340,"424 S. Pulaski Street, Baltimore, Maryland",NA,Recreation center,424 S. Pulaski Street,Baltimore,Maryland,410-396-3717,19,Samuel F.B. Morse Recreation Center,FALSE,,"July 18-19, 8 a.m. - 8 p.m.
+July 20, 3 p.m. - 8 p.m.",0.95,precise,{street_number}
+0101000020E6100000B1F9B836542853C02D3E05C078A64340,"1201 Pennsylvania Avenue, Baltimore, Maryland",NA,Recreation center,1201 Pennsylvania Avenue,Baltimore,Maryland,410-396-8490,20,Robert C. Marshall Recreation Center,FALSE,,"July 18-19, 8 a.m. - 8 p.m.
+July 20, 3 p.m. - 8 p.m",0.9,precise,{street_number}
+0101000020E61000003BE466B8012753C04F58E20165A74340,"425 E. Federal Street, Baltimore, Maryland",NA,Senior center,425 E. Federal Street,Baltimore,Maryland,410-528-1552,21,Greenmount Senior Center,FALSE,,"July 18-19, 7:30 a.m. -  7p.m.
+July 20, 10. a.m. - 5 p.m.
+July 21, 10 a.m. - 5 p.m.",0.95,precise,{street_number}
+0101000020E61000006E8B321B642C53C0D00F238447AF4340,"3101 Fallstaff Road, Baltimore, Maryland",NA,Senior center,3101 Fallstaff Road,Baltimore,Maryland,410-358-6856,22,Edward A. Myerberg Senior Center,FALSE,,"July 18, 7:30 a.m. - 7 p.m.
+July 19, 7:30 a.m. - 3 p.m.
+July 21, 9 a.m. - 1 p.m.",0.9,precise,{street_number}
+0101000020E6100000EC12D55B032753C039EE940ED6AB4340,"5828 York Road, Baltimore, Maryland",NA,Senior center,5828 York Road,Baltimore,Maryland,410-323-7131,23,Senior Network of North Baltimore,FALSE,,"July 18-19, 7:30 a.m. -  7p.m.
+July 20, 9 a.m. - 11 a.m.
+July 21, 10 a.m. - 1 p.m.",0.85,precise,{street}
+0101000020E6100000C442AD69DE2553C0CA89761552A24340,"1627 E. Fort Avenue, Baltimore, Maryland",NA,Recreation center,1627 E. Fort Ave.,Baltimore,Maryland,410-837-4423,18,Locust Point Recreation Center,FALSE,,"July 18-19, 8 a.m. - 8 p.m.
+July 20, 10 a.m. - 6 p.m.",0.92,precise,{street number}
+,,,,,,,,25,,,,,,,
+0101000020E610000011018750A52C53C098C0ADBB79AA4340,"4801 Liberty Heights Avenue, Baltimore, Maryland",NA,Senior center,4801 Liberty Heights Avenue,Baltimore,Maryland,410-466-2124,24,Forest Park Senior Center,FALSE,,"July 18-19, 7:30 a.m. - 8 p.m.
+July 20, 7 a.m. - 7 p.m.
+July 21, 7 a.m. - 7 p.m.",0.95,precise,{street_number}
+0101000020E610000035D3BD4EEA2753C01EFD2FD7A2A74340,"623 Eden Street, Baltimore, Maryland",NA,Recreation center,623 Eden St.,Baltimore,Maryland,410-396-7593,17,Chick Webb Recreation Center,FALSE,,"July 18-19, 9 a.m. - 9 p.m.",0.9,precise,{street}
+0101000020E6100000E65718C7ED2753C01D588E9081A74340,"120 W. Mosher Street, Baltimore, Maryland",NA,Recreation center,120 W. Mosher Street,Baltimore,Maryland,410-396-0374,16,Mt. Royal Recreation Center,FALSE,,"July 18-19, 8 a.m. - 8 p.m.
+July 20, 9 a.m. - 5 p.m",0.92,precise,{street number}
